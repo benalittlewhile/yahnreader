@@ -1,50 +1,41 @@
+import { Dispatch, SetStateAction } from "react";
 import { getUrlFragment } from "../lib/strings";
-
-export interface PostProps {
-  by: string;
-  descendants: number;
-  id: number;
-  kids: number[];
-  score: number;
-  time: number;
-  title: string;
-  type: string; // later could/should be an enum?
-  url: string;
-}
+import { Story } from "../lib/types";
 
 export default function Post({
-  by,
-  descendants,
-  id,
-  kids,
-  score,
-  time,
-  title,
-  type,
-  url,
-}: PostProps) {
+  story,
+  changeStoryHandler,
+}: {
+  story: Story;
+  changeStoryHandler: (post: Story) => void;
+}) {
+  let { by, descendants, id, kids, score, time, title, type, url } = story;
   return (
     <div
-      className="m-2 mb-3 flex flex-col overflow-hidden text-ellipsis px-2 text-sm"
+      className="border-b- flex flex-col overflow-hidden text-ellipsis border-b-2 border-gray-400 px-2 py-2 text-sm"
       key={id}
+      onClick={() => {
+        changeStoryHandler(story);
+      }}
     >
       <span className="h-fit min-h-fit text-start font-bold">
         {title}
-        <span className="float-right overflow-hidden text-ellipsis font-normal">
-          (
-          <a
-            href={url}
-            className="overflow-hidden text-ellipsis whitespace-nowrap text-xs underline"
-          >
-            {getUrlFragment(url)}
-          </a>
-          )
-        </span>
+        {url && (
+          <span className="float-right overflow-hidden text-ellipsis font-normal">
+            (
+            <a
+              href={url}
+              className="overflow-hidden text-ellipsis whitespace-nowrap text-xs underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {getUrlFragment(url)}
+            </a>
+            )
+          </span>
+        )}
       </span>
-      <span
-        className="mt-1 text-start text-sm
-      "
-      >
+      <span className="mt-1 text-start text-sm">
         by {by} with {descendants} comments
       </span>
     </div>
