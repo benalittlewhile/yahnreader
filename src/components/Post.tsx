@@ -12,7 +12,7 @@ export default function Post({
   let { by, descendants, id, kids, score, time, title, type, url } = story;
   return (
     <div
-      className="border-b- flex flex-col overflow-hidden text-ellipsis border-b-2 border-gray-400 px-2 py-2 text-sm"
+      className="flex flex-col overflow-hidden text-ellipsis border-b-2 border-gray-400 px-2 py-2 text-sm last:border-b-0"
       key={id}
       onClick={() => {
         changeStoryHandler(story);

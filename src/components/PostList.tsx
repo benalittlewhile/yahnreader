@@ -11,26 +11,24 @@ export default function PostList({
 }) {
   // show a list of results of the given type
   return (
-    <div>
+    <div className="max-h-screen overflow-scroll">
       <div className="bg-opacity-0 px-2 pb-1 text-hnTopOrange">y++ </div>
-      <div className="max-h-screen overflow-scroll">
-        {posts.length > 0 ? (
-          posts.map(
-            (post: number | Story) =>
-              typeof post === "object" && (
-                <Post
-                  story={post}
-                  key={post.id}
-                  changeStoryHandler={changeStoryHandler}
-                />
-              )
-          )
-        ) : (
-          <div className="grid h-full w-full">
-            <p className="m-auto">loading</p>
-          </div>
-        )}
-      </div>
+      {posts.length > 0 ? (
+        posts.map(
+          (post: number | Story) =>
+            typeof post === "object" && (
+              <Post
+                story={post}
+                key={post.id}
+                changeStoryHandler={changeStoryHandler}
+              />
+            )
+        )
+      ) : (
+        <div className="grid h-full w-full">
+          <p className="m-auto">loading</p>
+        </div>
+      )}
     </div>
   );
 }

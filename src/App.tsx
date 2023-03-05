@@ -47,7 +47,7 @@ function App() {
   return (
     <StateContext.Provider value={{ state, dispatch, selectedPost }}>
       <div className="flex max-h-full max-w-full flex-col items-center justify-center  bg-white text-black dark:bg-black dark:text-white">
-        <div className="grid h-screen w-full grid-cols-[2fr_3px_6fr] ">
+        <div className="grid max-h-screen w-full grid-cols-[2fr_3px_6fr] ">
           <PostList
             posts={state ? state : []}
             changeStoryHandler={selectAndLoad}
