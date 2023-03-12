@@ -40,5 +40,6 @@ export const parseComment = (comment: AlgoliaComment): Comment => {
     text: comment.text,
     time: comment.created_at_i,
     type: comment.type,
+    score: comment.points,
   } as Comment;
 };

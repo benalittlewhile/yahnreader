@@ -9,7 +9,7 @@ export default function Reader() {
     (post) => typeof post === "object" && post.id === selectedPost
   );
   return (
-    <div className="mx-36 max-h-screen overflow-auto px-2 py-2">
+    <div className="max-h-screen overflow-auto px-36 py-2">
       {typeof parent === "object" && selectedPost && (
         <>
           {parent?.text && (
@@ -19,7 +19,7 @@ export default function Reader() {
           )}
           <ul>
             {parent?.kids?.map((kid) => (
-              <ReaderComment comment={kid} />
+              <ReaderComment comment={kid} key={kid.id} />
             ))}
           </ul>
         </>

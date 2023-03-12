@@ -34,6 +34,7 @@ export interface Comment {
   parent: number;
   text: string;
   time: number;
+  score: number;
   type: string; // this should probably be an enum
 }
 
