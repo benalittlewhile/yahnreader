@@ -20,7 +20,7 @@ export const fetchPost = async (id: number) => {
 };
 
 export const fetchPostComments = async (id: number) => {
-  const comments = await fetch(`http://hn.algolia.com/api/v1/items/${id}`)
+  const comments = await fetch(`https://hn.algolia.com/api/v1/items/${id}`)
     .then((res) => res.json())
     .then((item: AlgoliaResult) =>
       item.children.map((child: AlgoliaComment) => parseComment(child))
